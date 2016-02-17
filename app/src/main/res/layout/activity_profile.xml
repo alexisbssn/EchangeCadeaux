@@ -16,15 +16,15 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/ProfileTitle"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:editable="false"/>
+        android:layout_centerHorizontal="true"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <!--<RelativeLayout
-            android:layout_weight="2"
-            android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/ProfileTitle">
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:paddingRight="@dimen/activity_horizontal_margin">
             <android.support.v7.widget.AppCompatImageView
@@ -33,83 +33,95 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"/>
         </RelativeLayout>
-        <RelativeLayout
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <LinearLayout
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:singleLine="true"
+                    android:text="@string/profile_first_name_title"
+                    android:labelFor="@+id/firstName"/>
+                <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/profile_first_name_title"
-                        android:labelFor="@id/firstName"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/profile_last_name_title"
-                        android:labelFor="@id/lastName"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/profile_email_title"
-                        android:labelFor="@id/email"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/profile_birth_date_title"
-                        android:labelFor="@id/birthDate"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/profile_region_title"
-                        android:labelFor="@id/region"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/profile_interests_title" />
-                </LinearLayout>
-                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:singleLine="true"
+                    android:text="@string/profile_last_name_title"
+                    android:labelFor="@+id/lastName"/>
+                <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/firstName"/>
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/lastName"/>
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/email"
-                        android:inputType="textEmailAddress" />
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/birthDate"/>
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/region"/>
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:singleLine="true"
+                    android:text="@string/profile_email_title"
+                    android:labelFor="@+id/email"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:singleLine="true"
+                    android:text="@string/profile_birth_date_title"
+                    android:labelFor="@+id/birthDate"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:singleLine="true"
+                    android:text="@string/profile_region_title"
+                    android:labelFor="@+id/region"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:singleLine="true"
+                    android:text="@string/profile_interests_title" />
             </LinearLayout>
-        </RelativeLayout>-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/"
+                    android:singleLine="true"
+                    android:id="@+id/firstName"
+                    android:inputType="textPersonName"/>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:id="@+id/lastName"
+                    android:inputType="textPersonName"/>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:id="@+id/email"
+                    android:inputType="textEmailAddress" />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:id="@+id/birthDate"
+                    android:inputType="date"/>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:id="@+id/region"
+                    android:inputType="textCapWords"/>
+
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
