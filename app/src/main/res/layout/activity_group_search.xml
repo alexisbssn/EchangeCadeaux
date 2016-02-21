@@ -9,4 +9,28 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.alexis.colval.giftrain.GroupSearch">
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchBar"
+        android:singleLine="true"/>
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_alignRight="@id/searchBar"
+        android:text="@string/button_group_search_search"
+        android:onClick="onClickSearch"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/searchBar">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/searchResults">
+        </LinearLayout>
+    </ScrollView>
+
+
 </RelativeLayout>

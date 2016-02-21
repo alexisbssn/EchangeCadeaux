@@ -19,7 +19,8 @@
         <activity android:name=".Homepage" />
         <activity android:name=".Profile" />
         <activity android:name=".Wishlist" />
-        <activity android:name=".GroupSearch"></activity>
+        <activity android:name=".GroupSearch" />
+        <activity android:name=".GroupPage"></activity>
     </application>
 
 </manifest>

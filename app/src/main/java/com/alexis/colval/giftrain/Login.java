@@ -13,6 +13,7 @@ import android.widget.AbsoluteLayout;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Date;
 
@@ -49,10 +50,10 @@ public class Login extends AppCompatActivity {
     }
 
     public void onClickRegister(View v){
-        if(findViewById(R.id.registerLayout).getVisibility() == View.VISIBLE){
-            register();
-        }else{
+        if(findViewById(R.id.registerLayout).getVisibility() == View.INVISIBLE){
             showRegisterFields();
+        }else{
+            register();
         }
     }
 
@@ -82,8 +83,10 @@ public class Login extends AppCompatActivity {
 
         if(email.isEmpty() || pwd.isEmpty() || fName.isEmpty() || lName.isEmpty()){
             addError();
-            return;
+            //return;
         }
+        Toast toast = Toast.makeText(getApplicationContext(), "Registration successful", Toast.LENGTH_SHORT);
+        toast.show();
         login();
     }
 

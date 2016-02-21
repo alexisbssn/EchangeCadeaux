@@ -42,45 +42,46 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:layout_marginTop="@dimen/fab_margin"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/profile_text_height"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:singleLine="true"
                     android:text="@string/profile_first_name_title"
                     android:labelFor="@+id/firstName"/>
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/profile_text_height"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:singleLine="true"
                     android:text="@string/profile_last_name_title"
                     android:labelFor="@+id/lastName"/>
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/profile_text_height"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:singleLine="true"
                     android:text="@string/profile_email_title"
                     android:labelFor="@+id/email"/>
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/profile_text_height"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:singleLine="true"
                     android:text="@string/profile_birth_date_title"
                     android:labelFor="@+id/birthDate"/>
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/profile_text_height"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:singleLine="true"
                     android:text="@string/profile_region_title"
                     android:labelFor="@+id/region"/>
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/profile_text_height"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:singleLine="true"
                     android:text="@string/profile_interests_title" />
@@ -92,31 +93,31 @@
                 android:orientation="vertical">
                 <EditText
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/"
+                    android:layout_height="@dimen/profile_text_height"
                     android:singleLine="true"
                     android:id="@+id/firstName"
                     android:inputType="textPersonName"/>
                 <EditText
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/profile_text_height"
                     android:singleLine="true"
                     android:id="@+id/lastName"
                     android:inputType="textPersonName"/>
                 <EditText
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/profile_text_height"
                     android:singleLine="true"
                     android:id="@+id/email"
                     android:inputType="textEmailAddress" />
                 <EditText
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/profile_text_height"
                     android:singleLine="true"
                     android:id="@+id/birthDate"
                     android:inputType="date"/>
                 <EditText
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/profile_text_height"
                     android:singleLine="true"
                     android:id="@+id/region"
                     android:inputType="textCapWords"/>
