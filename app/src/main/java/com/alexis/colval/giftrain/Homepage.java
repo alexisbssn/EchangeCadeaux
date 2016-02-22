@@ -13,7 +13,7 @@ public class Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
     }
 
-    public void OnClickLogin(View v){
+    public void OnClickLogout(View v){
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
     }

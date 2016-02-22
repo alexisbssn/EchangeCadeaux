@@ -1,12 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.alexis.colval.giftrain.Wishlist">
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_input_add"
+        android:onClick="onClickAddWish"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewWishListTitle"
+        android:text="Wishlist"
+        android:textSize="@dimen/abc_text_size_display_1_material"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewWishListTitle">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nintendo Gamecube"
+                android:textSize="@dimen/abc_text_size_large_material"
+                android:layout_margin="@dimen/abc_action_bar_default_padding_start_material"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Super Smash Bros. Melee"
+                android:textSize="@dimen/abc_text_size_large_material"
+                android:layout_margin="@dimen/abc_action_bar_default_padding_start_material"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A pack of beer"
+                android:textSize="@dimen/abc_text_size_large_material"
+                android:layout_margin="@dimen/abc_action_bar_default_padding_start_material"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ping pong balls"
+                android:textSize="@dimen/abc_text_size_large_material"
+                android:layout_margin="@dimen/abc_action_bar_default_padding_start_material"/>
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

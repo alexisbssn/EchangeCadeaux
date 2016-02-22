@@ -21,7 +21,7 @@ public class GroupPage extends AppCompatActivity {
 
         int ttd = 8;
         TextView tvttd = (TextView)findViewById(R.id.textViewTimeNextDraw);
-        tvttd.setText(getString(R.string.group_page_time_until_next_draw) + ttd + getString(R.string.unit_days_spaced));
+        tvttd.setText(String.format(getString(R.string.group_page_time_until_next_draw), ttd));
 
         int drawInterval = 30;
         ProgressBar progressBar = (ProgressBar)findViewById(R.id.progressBarTimeNextDraw);
@@ -30,10 +30,10 @@ public class GroupPage extends AppCompatActivity {
 
         int price = 20;
         TextView giftPrice = (TextView)findViewById(R.id.textViewGiftPrice);
-        giftPrice.setText(getString(R.string.group_page_gift_price) + price + getString(R.string.unit_dollar));
+        giftPrice.setText(String.format(getString(R.string.group_page_gift_price), price));
 
         RatingBar ratingBar = (RatingBar)findViewById(R.id.ratingBarUserRating);
-        ratingBar.setMax(5);
+        ratingBar.setStepSize(0.5f);
         ratingBar.setRating(3.5f);
 
         TextView description = (TextView)findViewById(R.id.textViewGroupDescription);

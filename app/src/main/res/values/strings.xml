@@ -27,13 +27,21 @@
     <string name="profile_region_title">City/Region</string>
     <string name="profile_interests_title">Interests :</string>
     <string name="button_group_search_search">Search</string>
-    <string name="group_page_user_rating">User Rating</string>
     <string name="group_page_button_participate">Participate</string>
     <string name="group_page_button_see_participants">See participants</string>
     <string name="group_page_button_see_comments">See comments</string>
-    <string name="group_page_time_until_next_draw">"Time until next draw : "</string>
-    <string name="unit_days_spaced">" days"</string>
-    <string name="group_page_gift_price">"Gift price : "</string>
-    <string name="unit_dollar">$</string>
+    <string name="group_page_time_until_next_draw">"Time until next draw : %1$d days"</string>
+    <string name="group_page_gift_price">"Gift price : %1$d$"</string>
+
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pulvinar est non tempor hendrerit. Cras a velit convallis neque semper ultricies. Integer accumsan sodales nisl a sagittis. Suspendisse elit velit, imperdiet in ligula non, venenatis vehicula orci. Nam in justo sit amet orci mollis porttitor.</string>
+    <string name="group_search_sort_by_participants">Participants</string>
+    <string-array name="themes">
+        <item>All themes</item>
+        <item>theme 1</item>
+        <item>theme 2</item>
+        <item>theme 3</item>
+        <item>theme 4</item>
+    </string-array>
+    <string name="title_activity_wishlist">Wishlist</string>
+
 </resources>
