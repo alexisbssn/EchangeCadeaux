@@ -100,7 +100,6 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/layoutMultiDisplayGroup"
                 android:orientation="vertical">
-
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

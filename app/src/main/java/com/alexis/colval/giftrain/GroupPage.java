@@ -3,6 +3,8 @@ package com.alexis.colval.giftrain;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -43,11 +45,40 @@ public class GroupPage extends AppCompatActivity {
 
     private boolean isClickedSeeParticipants = false;
     public void onClickSeeParticipants(View view) {
-
+        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.layoutMultiDisplayGroup);
+        //linearLayout.removeAllViews();
+        if(isClickedSeeParticipants) {
+            isClickedSeeParticipants = false;
+        }else{
+            isClickedSeeParticipants = true;
+            android.content.Context appContext = getApplicationContext();
+            for(int i=0;i<6;i++) {
+                TextView tv = new TextView(appContext);
+                LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+                tv.setLayoutParams(lp);
+                tv.setText("Participant " + i);
+                linearLayout.addView(tv);
+            }
+        }
     }
 
     private boolean isClickedSeeComments = false;
     public void onClickSeeComments(View view) {
-
+        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.layoutMultiDisplayGroup);
+        linearLayout.removeAllViews();
+        if(isClickedSeeComments) {
+            isClickedSeeComments = false;
+        }else{
+            isClickedSeeComments = true;
+            android.content.Context appContext = getApplicationContext();
+            for(int i=0;i<6;i++) {
+                TextView tv = new TextView(appContext);
+                LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+                tv.setLayoutParams(lp);
+                tv.setTextSize(12);
+                tv.setText("Comment " + i);
+                linearLayout.addView(tv);
+            }
+        }
     }
 }
