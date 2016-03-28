@@ -1,0 +1,93 @@
+{
+  "project_info": {
+    "project_id": "echangecadeaux-93933",
+    "project_number": "242262829113",
+    "name": "EchangeCadeaux"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:242262829113:android:8442c9746b10b7f1",
+        "client_id": "android:com.alexis",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.alexis",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "242262829113-kopn8vivq6bsntt350eeovs5hh909tpk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 1
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:242262829113:android:de09d364d00b0489",
+        "client_id": "android:com.alexis.colval.giftrain",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.alexis.colval.giftrain",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "242262829113-jsgrbrdr1p5n16qdu9kjn5saall3dfal.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alexis.colval.giftrain",
+            "certificate_hash": "4FEB04B7EF71E052098D0A466834620EAEED8546"
+          }
+        },
+        {
+          "client_id": "242262829113-kopn8vivq6bsntt350eeovs5hh909tpk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}
