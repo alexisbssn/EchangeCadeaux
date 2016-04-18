@@ -11,6 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.alexis.colval.giftrain.DAL.DatabaseContracts;
+import com.alexis.colval.giftrain.DAL.DatabaseHelper;
+import com.alexis.colval.giftrain.DAL.ProfileHelper;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -138,11 +141,9 @@ public class Google_signin extends AppCompatActivity implements
             String personName = acct.getDisplayName();
             String googleId = acct.getId();
             mStatusTextView.setText(getString(R.string.signed_in_fmt, personName));
-            ProfileHelper profileHelper = new ProfileHelper(getApplicationContext());
-            if(!profileHelper.idExists(googleId)){
+            if(!ProfileHelper.getInstance().googleIdExists(getApplicationContext(), googleId)){
                 String personEmail = acct.getEmail();
                 Uri personPhoto = acct.getPhotoUrl();
-                SQLiteDatabase db = profileHelper.getWritableDatabase();
 
                 ContentValues values = new ContentValues();
                 values.put(DatabaseContracts.ProfileEntry.COLUMN_NAME_GOOGLE_ID, googleId);
@@ -150,7 +151,7 @@ public class Google_signin extends AppCompatActivity implements
                 values.put(DatabaseContracts.ProfileEntry.COLUMN_NAME_EMAIL, personEmail);
                 values.put(DatabaseContracts.ProfileEntry.COLUMN_NAME_PHOTO_URL, personPhoto.toString());
 
-                db.insert(
+                DatabaseHelper.getInstance(getApplicationContext()).insert(
                         DatabaseContracts.ProfileEntry.TABLE_NAME,
                         null,
                         values);

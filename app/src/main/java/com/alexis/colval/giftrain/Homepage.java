@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.alexis.colval.giftrain.DAL.Repository;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
@@ -16,7 +17,7 @@ public class Homepage extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener{
 
     private String googleId;
-    private GoogleApiClient mGoogleApiClient;
+    private int profileId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class Homepage extends AppCompatActivity implements
         if(googleId == null){
             OnClickLogout(null);
         }
+        profileId = Repository.getInstance().getProfileByGoogleId(getApplicationContext(), googleId);
     }
 
     public void OnClickLogout(View v){
@@ -33,7 +35,7 @@ public class Homepage extends AppCompatActivity implements
                 .requestEmail()
                 .requestProfile()
                 .build();
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
+        GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
@@ -51,7 +53,7 @@ public class Homepage extends AppCompatActivity implements
     }
 
     public void onClickProfile(View v){
-        Intent intent = new Intent(this, Profile.class);
+        Intent intent = new Intent(this, ProfilePage.class);
         intent.putExtra("google_id",googleId);
         startActivity(intent);
     }
@@ -64,12 +66,18 @@ public class Homepage extends AppCompatActivity implements
 
     public void onClickGroupSearch(View v){
         Intent intent = new Intent(this, GroupSearch.class);
-        intent.putExtra("google_id",googleId);
+        intent.putExtra("profileId", profileId);
         startActivity(intent);
     }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
         // boo
+    }
+
+    public void onClickMyGroups(View view) {
+        Intent intent = new Intent(this, MyGroups.class);
+        intent.putExtra("profileId", profileId);
+        startActivity(intent);
     }
 }

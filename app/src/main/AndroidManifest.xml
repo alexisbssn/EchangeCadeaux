@@ -17,14 +17,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".Homepage" />
-        <activity android:name=".Profile" />
+        <activity android:name=".ProfilePage" />
         <activity
             android:name=".Wishlist"
             android:label="@string/title_activity_wishlist"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".GroupSearch" />
         <activity android:name=".GroupPage" />
-        <activity android:name=".Login"/>
+        <activity android:name=".Login" />
+        <activity android:name=".MyGroups" />
+        <activity android:name=".EditGroup"></activity>
     </application>
 
 </manifest>

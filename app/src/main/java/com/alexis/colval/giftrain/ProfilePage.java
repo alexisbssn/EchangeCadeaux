@@ -5,26 +5,26 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.KeyListener;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.BufferedInputStream;
+import com.alexis.colval.giftrain.DAL.DatabaseContracts;
+import com.alexis.colval.giftrain.DAL.DatabaseHelper;
+import com.alexis.colval.giftrain.DAL.ProfileHelper;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 
-public class Profile extends AppCompatActivity {
+public class ProfilePage extends AppCompatActivity {
 
     //temporary no-db variables
     //String firstName="Alexis",lastName="Buisson",email="alexis.buisson@hotmail.com",region="Montérégie";
@@ -50,12 +50,9 @@ public class Profile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_profile_page);
 
         googleId = getIntent().getExtras().getString("google_id");
-
-        mProfileHelper =  new ProfileHelper(getApplicationContext());
-
         mTitle = (TextView)findViewById(R.id.ProfileTitle);
         mFirstName = (TextView)findViewById(R.id.firstName);
         mLastName = (TextView)findViewById(R.id.lastName);
@@ -77,7 +74,6 @@ public class Profile extends AppCompatActivity {
     }
 
     private void populate(){
-        SQLiteDatabase db = mProfileHelper.getReadableDatabase();
         String[] projection = {
                 DatabaseContracts.ProfileEntry.COLUMN_NAME_FNAME,
                 DatabaseContracts.ProfileEntry.COLUMN_NAME_LNAME,
@@ -90,7 +86,7 @@ public class Profile extends AppCompatActivity {
         String selection = DatabaseContracts.ProfileEntry.COLUMN_NAME_GOOGLE_ID + "=?";
         String[] selectionArgs = { googleId };
 
-        Cursor c = db.query(
+        Cursor c = DatabaseHelper.getInstance(getApplicationContext()).query(
                 DatabaseContracts.ProfileEntry.TABLE_NAME,// The table to query
                 projection,                               // The columns to return
                 selection,                                // The columns for the WHERE clause
@@ -121,8 +117,6 @@ public class Profile extends AppCompatActivity {
     }
 
     private void saveData() {
-        SQLiteDatabase db = mProfileHelper.getReadableDatabase();
-
         String strFilter = DatabaseContracts.ProfileEntry.COLUMN_NAME_GOOGLE_ID + "=?";
         ContentValues args = new ContentValues();
 
@@ -132,7 +126,7 @@ public class Profile extends AppCompatActivity {
         args.put(DatabaseContracts.ProfileEntry.COLUMN_NAME_EMAIL, mEmail.getText().toString());
         args.put(DatabaseContracts.ProfileEntry.COLUMN_NAME_REGION, mRegion.getText().toString());
 
-        db.update(DatabaseContracts.ProfileEntry.TABLE_NAME, args, strFilter, new String[]{googleId});
+        DatabaseHelper.getInstance(getApplicationContext()).update(DatabaseContracts.ProfileEntry.TABLE_NAME, args, strFilter, new String[]{googleId});
     }
 
     private void setEditable(boolean editable){

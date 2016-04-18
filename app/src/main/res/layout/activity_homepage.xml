@@ -35,6 +35,14 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/button_my_groups"
+        android:id="@+id/buttonMyGroups"
+        android:layout_below="@+id/buttonGroupSearch"
+        android:onClick="onClickMyGroups"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/button_back_to_login"
         android:id="@+id/buttonLogout"
         android:layout_alignParentBottom="true"

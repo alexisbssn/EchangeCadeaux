@@ -49,11 +49,6 @@
                     android:indeterminate="false"
                     style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
             </RelativeLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewGiftPrice"
-                android:textSize="@dimen/abc_text_size_medium_material"/>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -76,6 +71,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/group_page_button_participate"
                 android:id="@+id/buttonParticipateGroup"
+                android:onClick="onClickParticipate"
                 android:textSize="@dimen/abc_text_size_large_material"/>
             <RelativeLayout
                 android:layout_width="wrap_content"
