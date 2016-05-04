@@ -7,16 +7,15 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Activities.EditGroup">
-
+    tools:context="com.alexis.colval.giftrain.Activities.EditWish">
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:singleLine="true"
-            android:text="@string/edit_group_group_name"
-            android:labelFor="@+id/groupName"
+            android:text="@string/wish_title"
+            android:labelFor="@+id/wishTitle"
             android:layout_rowSpan="20"
             android:layout_columnSpan="30"
             android:layout_column="30"
@@ -24,8 +23,8 @@
         <TextView
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:singleLine="true"
-            android:text="@string/edit_group_group_scope"
-            android:labelFor="@+id/groupScope"
+            android:text="@string/wish_theme"
+            android:labelFor="@+id/wishTheme"
             android:layout_rowSpan="20"
             android:layout_columnSpan="30"
             android:layout_column="30"
@@ -33,41 +32,26 @@
         <TextView
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:singleLine="true"
-            android:text="@string/edit_group_draw_interval"
-            android:labelFor="@+id/drawInterval"
+            android:text="@string/wish_price"
+            android:labelFor="@+id/wishPrice"
             android:layout_rowSpan="20"
             android:layout_columnSpan="30"
             android:layout_column="30"
             android:layout_row="40"/>
-        <TextView
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:singleLine="true"
-            android:text="@string/edit_group_group_description"
-            android:labelFor="@+id/groupDescription"
-            android:layout_rowSpan="20"
-            android:layout_columnSpan="30"
-            android:layout_column="30"
-            android:layout_row="60"/>
-        <TextView
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:singleLine="true"
-            android:text="@string/edit_group_theme"
-            android:labelFor="@+id/groupTheme"
-            android:layout_rowSpan="20"
-            android:layout_columnSpan="30"
-            android:layout_column="30"
-            android:layout_row="80"/>
+
         <EditText
             android:singleLine="true"
-            android:id="@+id/groupName"
+            android:id="@+id/wishTitle"
             android:inputType="textCapWords"
             android:layout_rowSpan="20"
             android:layout_columnSpan="40"
             android:layout_column="60"
             android:layout_row="0"
             android:layout_width="match_parent"/>
-        <android.support.v7.widget.AppCompatSpinner
-            android:id="@+id/groupScope"
+        <EditText
+            android:id="@+id/wishTheme"
+            android:inputType="text"
+            android:singleLine="true"
             android:layout_rowSpan="20"
             android:layout_columnSpan="40"
             android:layout_column="60"
@@ -75,31 +59,14 @@
             android:layout_width="match_parent"/>
         <EditText
             android:singleLine="true"
-            android:id="@+id/drawInterval"
+            android:id="@+id/wishPrice"
             android:inputType="number"
             android:layout_rowSpan="20"
             android:layout_columnSpan="40"
             android:layout_column="60"
             android:layout_row="40"
             android:layout_width="match_parent"/>
-        <EditText
-            android:singleLine="true"
-            android:id="@+id/groupDescription"
-            android:inputType="text"
-            android:layout_rowSpan="20"
-            android:layout_columnSpan="40"
-            android:layout_column="60"
-            android:layout_row="60"
-            android:layout_width="match_parent"/>
-        <EditText
-            android:singleLine="true"
-            android:id="@+id/groupTheme"
-            android:inputType="text"
-            android:layout_rowSpan="20"
-            android:layout_columnSpan="40"
-            android:layout_column="60"
-            android:layout_row="80"
-            android:layout_width="match_parent"/>
+
     </GridLayout>
 
     <Button
@@ -108,13 +75,12 @@
         android:text="@string/button_cancel"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:onClick="onClickCancelEditGroup"/>
+        android:onClick="onClickCancelEditWish"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_finished"
         android:layout_alignParentEnd ="true"
         android:layout_alignParentBottom="true"
-        android:onClick="onClickDoneEditGroup"/>
-
+        android:onClick="onClickDoneEditWish"/>
 </RelativeLayout>

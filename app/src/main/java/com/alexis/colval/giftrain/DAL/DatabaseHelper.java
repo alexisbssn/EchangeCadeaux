@@ -56,6 +56,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     " FOREIGN KEY(" + DatabaseContracts.GroupEntry.COLUMN_NAME_CREATOR_ID + ") REFERENCES " +
                     DatabaseContracts.ProfileEntry.TABLE_NAME + "(" + DatabaseContracts.GroupEntry._ID + ")" +
                     " );";
+    private static final String SQL_CREATE_ENTRIES_WISH =
+            "CREATE TABLE " + DatabaseContracts.WishEntry.TABLE_NAME + "(" +
+                    DatabaseContracts.WishEntry._ID + INTEGER_TYPE + " PRIMARY KEY" + COMMA_SEP +
+                    DatabaseContracts.WishEntry.COLUMN_NAME_OWNER_ID + INTEGER_TYPE + COMMA_SEP +
+                    DatabaseContracts.WishEntry.COLUMN_NAME_WISH_TITLE + TEXT_TYPE + COMMA_SEP +
+                    DatabaseContracts.WishEntry.COLUMN_NAME_THEME+ TEXT_TYPE + COMMA_SEP +
+                    DatabaseContracts.WishEntry.COLUMN_NAME_PRICE + INTEGER_TYPE + COMMA_SEP +
+                    " FOREIGN KEY(" + DatabaseContracts.WishEntry.COLUMN_NAME_OWNER_ID + ") REFERENCES " +
+                    DatabaseContracts.ProfileEntry.TABLE_NAME + "(" + DatabaseContracts.WishEntry._ID + ")" +
+                    " );";
     private static final String SQL_CREATE_ENTRIES_COMMENT =
             "CREATE TABLE " + DatabaseContracts.CommentEntry.TABLE_NAME + " (" +
                     DatabaseContracts.CommentEntry._ID + INTEGER_TYPE + " PRIMARY KEY" + COMMA_SEP +
@@ -89,6 +99,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_ENTRIES_GROUP);
         db.execSQL(SQL_CREATE_ENTRIES_COMMENT);
         db.execSQL(SQL_CREATE_ENTRIES_PARTICIPANT);
+        db.execSQL(SQL_CREATE_ENTRIES_WISH);
     }
 
     @Override

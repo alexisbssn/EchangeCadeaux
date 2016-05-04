@@ -1,10 +1,7 @@
-package com.alexis.colval.giftrain;
+package com.alexis.colval.giftrain.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +12,7 @@ import android.widget.Toast;
 
 import com.alexis.colval.giftrain.DAL.Repository;
 import com.alexis.colval.giftrain.Model.Group;
+import com.alexis.colval.giftrain.R;
 
 public class MyGroups extends AppCompatActivity {
 
@@ -38,7 +36,7 @@ public class MyGroups extends AppCompatActivity {
     public void onClickAddGroup(View view) {
         Intent intent = new Intent(this, EditGroup.class);
         Bundle extras = new Bundle();
-        extras.putInt("creatorId", profileId);
+        extras.putInt("ownerId", profileId);
         intent.putExtras(extras);
         startActivityForResult(intent, editGroupCode);
     }
@@ -65,7 +63,7 @@ public class MyGroups extends AppCompatActivity {
                 public void onClick(View button){
                     Intent intent = new Intent(getApplicationContext(), EditGroup.class);
                     Bundle b = new Bundle();
-                    b.putInt("creatorId", profileId);
+                    b.putInt("ownerId", profileId);
                     b.putParcelable("existingGroup", g);
                     intent.putExtras(b);
                     startActivity(intent);

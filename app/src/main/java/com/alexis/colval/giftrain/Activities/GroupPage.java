@@ -1,4 +1,4 @@
-package com.alexis.colval.giftrain;
+package com.alexis.colval.giftrain.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import com.alexis.colval.giftrain.DAL.Repository;
 import com.alexis.colval.giftrain.Model.Comment;
 import com.alexis.colval.giftrain.Model.Group;
 import com.alexis.colval.giftrain.Model.Profile;
+import com.alexis.colval.giftrain.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -84,7 +85,7 @@ public class GroupPage extends AppCompatActivity {
         }else{
             isClickedSeeComments = true;
             android.content.Context appContext = getApplicationContext();
-            for(Comment c : group.getComments()) {
+            for(Comment c : wish.getComments()) {
                 TextView tv = new TextView(appContext);
                 LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
                 tv.setLayoutParams(lp);
@@ -97,6 +98,6 @@ public class GroupPage extends AppCompatActivity {
 
     public void onClickParticipate(View view) {
         Repository.getInstance().addParticipant(getApplicationContext(), profileId, group.getId());
-        Toast.makeText(getApplicationContext(), "You now participate in this group", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "You now participate in this wish", Toast.LENGTH_LONG).show();
     }
 }

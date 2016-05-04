@@ -1,9 +1,8 @@
-package com.alexis.colval.giftrain;
+package com.alexis.colval.giftrain.Activities;
 
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +13,7 @@ import android.widget.TextView;
 import com.alexis.colval.giftrain.DAL.DatabaseContracts;
 import com.alexis.colval.giftrain.DAL.DatabaseHelper;
 import com.alexis.colval.giftrain.DAL.ProfileHelper;
+import com.alexis.colval.giftrain.R;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;

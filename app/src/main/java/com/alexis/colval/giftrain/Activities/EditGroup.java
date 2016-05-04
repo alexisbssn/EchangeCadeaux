@@ -1,4 +1,4 @@
-package com.alexis.colval.giftrain;
+package com.alexis.colval.giftrain.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.alexis.colval.giftrain.DAL.Repository;
 import com.alexis.colval.giftrain.Model.Group;
+import com.alexis.colval.giftrain.R;
 
 public class EditGroup extends AppCompatActivity {
 
@@ -35,9 +36,9 @@ public class EditGroup extends AppCompatActivity {
         description = (EditText) findViewById(R.id.groupDescription);
         drawInterval = (EditText) findViewById(R.id.drawInterval);
         theme = (EditText) findViewById(R.id.groupTheme);
-        //fill if not a new group
+        //fill if not a new wish
         group = getIntent().getParcelableExtra("existingGroup");
-        creatorId = getIntent().getExtras().getInt("creatorId", -1);
+        creatorId = getIntent().getExtras().getInt("ownerId", -1);
         if(group != null){
             groupName.setText(group.getGroupName());
             description.setText(group.getGroupDescription());

@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.alexis.colval.giftrain.Wishlist">
+    tools:context=".Activities.Wishlist">
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
@@ -13,49 +13,16 @@
         android:src="@android:drawable/ic_input_add"
         android:onClick="onClickAddWish"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewWishListTitle"
-        android:text="Wishlist"
-        android:textSize="@dimen/abc_text_size_display_1_material"/>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewWishListTitle">
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nintendo Gamecube"
-                android:textSize="@dimen/abc_text_size_large_material"
-                android:layout_margin="@dimen/abc_action_bar_default_padding_start_material"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Super Smash Bros. Melee"
-                android:textSize="@dimen/abc_text_size_large_material"
-                android:layout_margin="@dimen/abc_action_bar_default_padding_start_material"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="A pack of beer"
-                android:textSize="@dimen/abc_text_size_large_material"
-                android:layout_margin="@dimen/abc_action_bar_default_padding_start_material"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ping pong balls"
-                android:textSize="@dimen/abc_text_size_large_material"
-                android:layout_margin="@dimen/abc_action_bar_default_padding_start_material"/>
-        </LinearLayout>
+            android:orientation="vertical"
+            android:id="@+id/wishlistLinearLayout"/>
     </ScrollView>
 
 </RelativeLayout>

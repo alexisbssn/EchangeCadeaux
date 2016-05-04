@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ProfilePage"
+    tools:context=".Activities.ProfilePage"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 <LinearLayout
@@ -31,7 +31,8 @@
                 android:layout_width="wrap_content"
                 android:src="@android:drawable/ic_menu_camera"
                 android:id="@+id/profilePicture"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true"
+                android:onClick="onClickProfileImage"/>
         </RelativeLayout>
         <GridLayout
             android:layout_width="match_parent"

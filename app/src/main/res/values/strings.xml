@@ -32,6 +32,7 @@
     <string name="profile_interests_title">Interests :</string>
     <string name="button_group_search_search">Search</string>
     <string name="button_my_groups">My groups</string>
+    <string name="button_invite">Invite someone by SMS</string>
 
     <string name="group_page_button_participate">Participate</string>
     <string name="group_page_button_see_participants">See participants</string>
@@ -53,7 +54,7 @@
         <item>Cat Food</item>
         <item>Dog Toys</item>
     </string-array>
-    <string name="title_activity_wishlist">Wishlist</string>
+
 
     <string name="signed_in_fmt">Signed in as: %s</string>
     <string name="signed_out">Signed out</string>
@@ -67,6 +68,15 @@
     <string name="edit_group_error">You must fill every field</string>
     <string name="edit_group_draw_interval">Draw interval (days)</string>
     <string name="edit_group_theme">Theme</string>
+
+    <string name="title_activity_wishlist">Wishlist</string>
+    <string name="wish_title">Wish title</string>
+    <string name="wish_theme">Theme</string>
+    <string name="wish_price">Price</string>
+    <string name="edit_wish_error">You must fill every field</string>
+
+    <string name="sms_default">You should check out this cool app called Gift Rain!</string>
+
 
     <string-array name="group_scopes">
         <item>Public</item>

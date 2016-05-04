@@ -28,6 +28,13 @@ public class DatabaseContracts {
         public static final String COLUMN_NAME_NEXT_DRAW = "next_draw";
         public static final String COLUMN_NAME_THEME = "theme";
     }
+    public static abstract class WishEntry implements BaseColumns{
+        public static final String TABLE_NAME = "Wish";
+        public static final String COLUMN_NAME_WISH_TITLE = "wish_title";
+        public static final String COLUMN_NAME_THEME = "theme";
+        public static final String COLUMN_NAME_OWNER_ID = "owner_id";
+        public static final String COLUMN_NAME_PRICE = "price";
+    }
     public static abstract class ParticipantEntry implements BaseColumns {
         public static final String TABLE_NAME = "Participant";
         public static final String COLUMN_NAME_GROUP_ID = "group_id";

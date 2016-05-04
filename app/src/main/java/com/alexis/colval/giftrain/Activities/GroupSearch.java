@@ -1,4 +1,4 @@
-package com.alexis.colval.giftrain;
+package com.alexis.colval.giftrain.Activities;
 
 import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
@@ -9,17 +9,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.view.ViewGroup.LayoutParams;
 import android.content.Intent;
 import android.widget.Spinner;
 
 import com.alexis.colval.giftrain.DAL.Repository;
 import com.alexis.colval.giftrain.Model.Group;
+import com.alexis.colval.giftrain.R;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.List;
 
 public class GroupSearch extends AppCompatActivity {

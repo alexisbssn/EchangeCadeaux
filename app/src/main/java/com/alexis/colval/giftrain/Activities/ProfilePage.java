@@ -1,23 +1,30 @@
-package com.alexis.colval.giftrain;
+package com.alexis.colval.giftrain.Activities;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.KeyListener;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alexis.colval.giftrain.DAL.DatabaseContracts;
 import com.alexis.colval.giftrain.DAL.DatabaseHelper;
 import com.alexis.colval.giftrain.DAL.ProfileHelper;
+import com.alexis.colval.giftrain.R;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
@@ -25,10 +32,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ProfilePage extends AppCompatActivity {
-
-    //temporary no-db variables
-    //String firstName="Alexis",lastName="Buisson",email="alexis.buisson@hotmail.com",region="Montérégie";
-    //Date birthDate = new Date(1996 + 1900, 3, 27);
+    private static final int SELECT_PICTURE = 1;
 
     private String googleId;
     private ProfileHelper mProfileHelper;
@@ -39,6 +43,7 @@ public class ProfilePage extends AppCompatActivity {
     private TextView mEmail;
     private TextView mRegion;
     private TextView mBirthDate;
+    private String photoUri;
 
     private KeyListener mFirstNameKeyListener;
     private KeyListener mLastNameKeyListener;
@@ -91,7 +96,7 @@ public class ProfilePage extends AppCompatActivity {
                 projection,                               // The columns to return
                 selection,                                // The columns for the WHERE clause
                 selectionArgs,                            // The values for the WHERE clause
-                null,                                     // don't group the rows
+                null,                                     // don't wish the rows
                 null,                                     // don't filter by row groups
                 null                                      // The sort order
         );
@@ -101,12 +106,8 @@ public class ProfilePage extends AppCompatActivity {
         String bDate = c.getString(c.getColumnIndex(DatabaseContracts.ProfileEntry.COLUMN_NAME_BDATE));
         String email = c.getString(c.getColumnIndex(DatabaseContracts.ProfileEntry.COLUMN_NAME_EMAIL));
         String region = c.getString(c.getColumnIndex(DatabaseContracts.ProfileEntry.COLUMN_NAME_REGION));
-        final String photoUrl = c.getString(c.getColumnIndex(DatabaseContracts.ProfileEntry.COLUMN_NAME_PHOTO_URL));
-        if(photoUrl != null) { //Retrieving image from network, needs a thread
-            ImageView iv = (ImageView)findViewById(R.id.profilePicture);
-            BitmapWorkerTask task = new BitmapWorkerTask(iv, photoUrl);
-            task.execute();
-        }
+        photoUri = c.getString(c.getColumnIndex(DatabaseContracts.ProfileEntry.COLUMN_NAME_PHOTO_URL));
+        loadImage();
 
         mTitle.setText(fName + "'s Profile");
         mFirstName.setText(fName);
@@ -125,6 +126,7 @@ public class ProfilePage extends AppCompatActivity {
         args.put(DatabaseContracts.ProfileEntry.COLUMN_NAME_BDATE, mBirthDate.getText().toString());
         args.put(DatabaseContracts.ProfileEntry.COLUMN_NAME_EMAIL, mEmail.getText().toString());
         args.put(DatabaseContracts.ProfileEntry.COLUMN_NAME_REGION, mRegion.getText().toString());
+        args.put(DatabaseContracts.ProfileEntry.COLUMN_NAME_PHOTO_URL, photoUri);
 
         DatabaseHelper.getInstance(getApplicationContext()).update(DatabaseContracts.ProfileEntry.TABLE_NAME, args, strFilter, new String[]{googleId});
     }
@@ -185,6 +187,40 @@ public class ProfilePage extends AppCompatActivity {
         }
     }
 
+    public void onClickProfileImage(View view) {
+        boolean currentlyLocked = (mFirstName.getKeyListener() == null); //if not editable, true, and vice versa
+        if(!currentlyLocked) {
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(intent,
+                    "Select Picture"), SELECT_PICTURE);
+        }
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == SELECT_PICTURE) {
+                Uri selectedImage = data.getData();
+                String[] filePathColumn = { MediaStore.Images.Media.DATA };
+                Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
+                cursor.moveToFirst();
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                String picturePath = cursor.getString(columnIndex);
+                cursor.close();
+                photoUri = picturePath;
+                loadImage();
+            }
+        }
+    }
+
+    private void loadImage(){
+        if(photoUri != null) { //Retrieving image from network or phone, needs a thread
+            ImageView iv = (ImageView)findViewById(R.id.profilePicture);
+            BitmapWorkerTask task = new BitmapWorkerTask(iv, photoUri);
+            task.execute();
+        }
+    }
     // Function doInBackground from http://stackoverflow.com/questions/11831188/how-to-get-bitmap-from-a-url-in-android
     // Rest of the class from http://developer.android.com/training/displaying-bitmaps/process-bitmap.html
     private class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
@@ -201,17 +237,25 @@ public class ProfilePage extends AppCompatActivity {
         // Decode image in background.
         @Override
         protected Bitmap doInBackground(Integer... params) {
-            try {
-                URL url = new URL(urlString);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setDoInput(true);
-                connection.connect();
-                InputStream input = connection.getInputStream();
-                return BitmapFactory.decodeStream(input);
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
+            if(urlString.startsWith("/")){ //local image inside storage
+                File imgFile = new  File(urlString);
+                if(imgFile.exists()){
+                    return BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+                }
+            }else {
+                try { // network image
+                    URL url = new URL(urlString);
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setDoInput(true);
+                    connection.connect();
+                    InputStream input = connection.getInputStream();
+                    return BitmapFactory.decodeStream(input);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return null;
+                }
             }
+            return null;
         }
 
         // Once complete, see if ImageView is still around and set bitmap.

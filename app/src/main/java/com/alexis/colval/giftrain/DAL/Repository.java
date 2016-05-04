@@ -5,6 +5,7 @@ import android.database.Cursor;
 
 import com.alexis.colval.giftrain.Model.Group;
 import com.alexis.colval.giftrain.Model.Profile;
+import com.alexis.colval.giftrain.Model.Wish;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -73,5 +74,17 @@ public class Repository {
             participants.add(ProfileHelper.getInstance().getProfileById(appContext, id));
         }
         return  participants;
+    }
+
+    public void addWish(Context context, String title, String theme, int price, int ownerId) {
+        WishHelper.getInstance().addWish(context, title, theme, price, ownerId);
+    }
+
+    public void updateWish(Context context, int id, String title, String theme, int price, int ownerId) {
+        WishHelper.getInstance().updateWish(context, id, title, theme, price, ownerId);
+    }
+
+    public List<Wish> getWishesByProfileId(Context context, int profileId) {
+        return WishHelper.getInstance().getWishesByProfileId(context, profileId);
     }
 }
