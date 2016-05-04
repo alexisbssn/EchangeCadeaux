@@ -21,7 +21,6 @@ import java.util.List;
 public class Repository {
 
     private static Repository instance;
-    private GroupHelper groupHelper;
 
     private Repository(){
     }
